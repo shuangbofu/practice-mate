@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+p {
+	line-height: 2;
+}
+
+/* styles.css */
+blockquote {
+	@apply border-l-4 py-2 px-4 my-4 bg-gray-100 dark:bg-zinc-900;
+}
+
+blockquote::before {
+	@apply text-lg font-bold leading-none pl-[-0.8rem] text-zinc-600 dark:text-gray-300;
+	content: "“";
+}
+
+code {
+	/* @apply whitespace-normal; */
+	/* white-space: normal!important; */
+	/* @apply bg-white dark:bg-gray-800 rounded-md px-2 py-1 shadow-sm; */
+}
+
+/* 代码高亮示例（需配合 Prism.js 或其他语法高亮库） */
+code[class*="language-"] {
+	@apply relative;
+}
+
+code[class*="language-"]::after {
+	@apply absolute inset-x-0 bottom-0 h-1 w-full bg-gray-100 dark:bg-zinc-800;
+}
+
+/* styles.css */
+ul {
+	@apply list-decimal pl-6 mb-4;
+	/* 数字编号列表 + 缩进 */
+}
+
+li {
+	@apply mb-2 last:mb-0;
+	/* 列表项间距 + 最后一项无底部间距 */
+}
+
+/* styles.css */
+figure {
+	@apply mx-auto mb-4 bg-white dark:bg-black;
+}
+
+figure img {
+	@apply object-cover transition-transform duration-300 hover:scale-150 hover:transform;
+}
+
+figure figcaption {
+	@apply mt-2 text-center text-sm font-semibold text-gray-600 dark:text-gray-600;
+}
