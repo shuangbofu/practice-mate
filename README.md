@@ -21,6 +21,17 @@
 
 ---
 
+## 👓 预览
+<div style="display: flex; justify-content: space-between;">
+  <div style="flex: 45%;">
+    <img src="/images/image.png" alt="浅色主题" style="width: 100%;">
+    <p align="center"><strong>浅色主题</strong></p>
+  </div>
+  <div style="flex: 45%;">
+    <img src="/images/image2.png" alt="深色主题" style="width: 100%;">
+    <p align="center"><strong>深色主题</strong></p>
+  </div>
+</div>
 ## 🚀 快速开始
 
 ### 在线体验
