@@ -1,4 +1,5 @@
 # Practice Mate 练习伴侣（八股文宝典）🧠📚
+![favicon](src/favicon.svg)
 
 [![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/shuangbofu/practice-mate)](https://github.com/shuangbofu/practice-mate/stargazers)
@@ -73,5 +74,7 @@ practice-mate/
 - 接入记忆曲线算法提高记忆效率
 
 ## 📜 许可证
-本项目基于 [MIT 许可证](https://github.com/shuangbofu/LICENSE) 开源。  
+
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+本项目基于 [MIT 许可证](LICENSE) 开源。  
 Copyright © 2025 [shuangbofu](https://github.com/shuangbofu)
