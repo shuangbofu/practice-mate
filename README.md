@@ -32,11 +32,11 @@
     </td>
   </tr>
   <tr>
-    <td width="50%">
-      <img src="/images/image.png">
+    <td width="50%" align="center">
+      <img src="/images/image.png" width="80%">
     </td>
-    <td width="50%">
-      <img src="/images/image2.png">
+    <td width="50%" align="center">
+      <img src="/images/image2.png" width="80%">
     </td>
   </tr>
 </table>
