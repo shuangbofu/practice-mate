@@ -30,9 +30,9 @@ const InterviewQuestionBank = () => {
 	const [questionPool, setQuestionPool] = useState<PracticeItem[]>([])
 
 	useEffect(() => {
-		document.title = import.meta.env.TITLE
+		document.title = import.meta.env.VITE_TITLE
 		try {
-			axios.get(import.meta.env.DATA_URL).then(res => {
+			axios.get(import.meta.env.VITE_DATA_URL).then(res => {
 				setData(res.data)
 			})
 		} catch (err) {

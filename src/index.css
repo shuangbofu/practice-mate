@@ -46,7 +46,8 @@ figure {
 }
 
 figure img {
-	@apply object-cover transition-transform duration-300 hover:scale-150 hover:transform;
+	@apply object-cover transition-transform duration-300
+	 /* hover:scale-150 hover:transform; */
 }
 
 figure figcaption {

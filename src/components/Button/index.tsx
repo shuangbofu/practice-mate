@@ -36,7 +36,7 @@ const Button = ({ children, className = '', size = 'default', ...props }: Button
         ${baseStyles}
         ${sizeStyles}
         ${className}
-        ${props.disabled ? disabledStyles : ''}
+        ${props.disabled ? disabledStyles : 'cursor-pointer'}
       `}
       {...props}
     >

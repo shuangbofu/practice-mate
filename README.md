@@ -66,7 +66,7 @@ yarn build
 ```bash
 # .env.development/.env.production配置默认数据
 # 默认java八股文数据
-DATA_URL = http://fusb.top/data/java/data.json
+VITE_DATA_URL = http://fusb.top/data/java/data.json
 ```
 ### 📄 数据结构
 ```json
