@@ -1,13 +1,13 @@
 import { useState, useEffect, useMemo } from 'react'
-import MultiSelectComponent from './PractiseSelector'
+import PractiseSelector from '../../components/PractiseSelector'
 import { useLocalStorageState } from 'ahooks'
-import { PracticeItem, PractiseMode, SelectOption, Topic } from '../types'
-import PractisePage from './Practise'
-import Switch from '../components/Switch'
-import InputNumber from '../components/InputNumber'
-import Button from '../components/Button'
+import { PracticeItem, PractiseMode, SelectOption, Topic } from '../../types'
+import PractisePage from '../Practise'
+import Switch from '../../components/Switch'
+import InputNumber from '../../components/InputNumber'
+import Button from '../../components/Button'
 import axios from 'axios'
-import { PRACTISE_MODE_LABEL } from '../constants'
+import { PRACTISE_MODE_LABEL } from '../../constants'
 
 // 随机选择数组中的 n 个元素
 function selectRandomNElementsFromArray(array: any[], n: number) {
@@ -93,12 +93,11 @@ const InterviewQuestionBank = () => {
 		const label = PRACTISE_MODE_LABEL[practiseMode]
 		return (
 			<div className="flex flex-col h-full overflow-hidden bg-gray-100 dark:bg-black">
-				<MultiSelectComponent
+				<PractiseSelector
 					style={{ flex: 1, overflow: 'auto' }}
 					topics={data.sort((a, b) => a.priority - b.priority)}
-					onSelectionChange={(selectedTopics, selectedCategories) => {
-						setSelectOption({ selectedCategories, selectedTopics })
-					}}
+					value={selectOption || { selectedCategories: [], selectedTopics: [] }}
+					onValueChange={setSelectOption}
 				/>
 				<div className='p-2 shadow-md bg-white dark:bg-zinc-800
 				 dark:text-white flex items-center gap-4 flex-wrap justify-center'
@@ -115,12 +114,10 @@ const InterviewQuestionBank = () => {
 					<Switch
 						size='small'
 						label='随机'
-						// disabled={disabled}
 						checked={isRandom}
 						onChange={setRandom}
 					/>
 					<Switch
-						//  disabled={disabled} 
 						checked={practiseMode === 'learn'}
 						onChange={value => setPractiseMode(value ? 'learn' : 'practise')}
 						size='small' label={['学习', '练习']} />

@@ -1,62 +1,56 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
 import classNames from 'classnames'
 import { COLORS, DARK_COLORS } from '../../constants'
-import { Topic } from '../../types'
+import { Topic, SelectOption } from '../../types'
 import { useDarkMode } from '../../utils/hook'
 
-const MultiSelectComponent: React.FC<{
+const PractiseSelector: React.FC<{
 	style?: CSSProperties
 	topics: Topic[]
-	onSelectionChange: (
-		selectedTopics: number[],
-		selectedCategories: number[]
-	) => void
-}> = ({ topics, onSelectionChange, style }) => {
-	const [selectedTopics, setselectedTopics] = useState<number[]>([])
-	const [selectedCategories, setSelectedCategories] = useState<number[]>([])
+	value: SelectOption
+	onValueChange: (options: SelectOption) => void
+}> = ({ topics, onValueChange, value, style }) => {
+	const [option, setOption] = useState<SelectOption>(value)
 	const dark = useDarkMode()
 
 	const handleTopicSelect = (topicId: number) => {
-		const selectedTopicIndex = selectedTopics.indexOf(topicId)
+		const selectedTopicIndex = option.selectedTopics.indexOf(topicId)
 		if (selectedTopicIndex !== -1) {
 			// 如果已选择，取消选择主题和相关类别
-			setselectedTopics(pre => pre.filter(id => id !== topicId))
-			setSelectedCategories(prevCategories =>
-				prevCategories.filter(id => {
+			setOption(pre => ({
+				selectedTopics: pre.selectedTopics.filter(id => id != topicId),
+				selectedCategories: pre.selectedCategories.filter(id => {
 					const topic = topics.find(t => t.id === topicId)
 					return !topic || !topic.categories.map(c => c.id).includes(id)
 				})
-			)
+			}))
 		} else {
 			// 如果未选择，添加选择主题和相关类别
-			setselectedTopics(prevTopics => [...prevTopics, topicId])
 			const topic = topics.find(t => t.id === topicId)
-			if (topic) {
-				setSelectedCategories(prevCategories => [
-					...prevCategories,
-					...topic.categories.map(c => c.id)
-				])
-			}
+			setOption(pre => ({
+				selectedTopics: [...pre.selectedTopics, topicId],
+				selectedCategories: topic ?
+					[
+						...pre.selectedCategories,
+						...topic.categories.map(c => c.id)
+					] : pre.selectedCategories
+			}))
 		}
 	}
 
 	const handleCategorySelect = (categoryId: number) => {
-		const selectedCategoryIndex = selectedCategories.indexOf(categoryId)
+		const selectedCategoryIndex = option.selectedCategories.indexOf(categoryId)
 		if (selectedCategoryIndex !== -1) {
-			// 如果已选择，取消选择类别
-			setSelectedCategories(prevCategories =>
-				prevCategories.filter(id => id !== categoryId)
-			)
+			setOption(pre => ({ ...pre, selectedCategories: pre.selectedCategories.filter(id => id !== categoryId) }
+			))
 		} else {
 			// 如果未选择，添加选择类别
-			setSelectedCategories(prevCategories => [...prevCategories, categoryId])
+			setOption(pre => ({ ...pre, selectedCategories: [...pre.selectedCategories, categoryId] }))
 		}
 	}
 
-	useEffect(() => {
-		onSelectionChange(selectedTopics, selectedCategories)
-	}, [selectedTopics, selectedCategories])
-
+	useEffect(() => { onValueChange(option) }, [option])
+	
 	return (
 		<div className='select-none bg-transparent p-2 pb-0 ' style={style}>
 			<div className="topic-selection">
@@ -64,7 +58,7 @@ const MultiSelectComponent: React.FC<{
 					<div className='relative flex flex-col sm:flex-row sm:flex-wrap gap-2 '>
 						{topics.map((topic, index) => {
 							const topicId = topic.id
-							const selected = selectedTopics.includes(topic.id)
+							const selected = option.selectedTopics.includes(topic.id)
 							const color = (dark ? DARK_COLORS : COLORS)[index]
 							return <div className={classNames(' rounded-md cursor-pointer p-4 bg-white  relative dark:brightness-50',
 								selected ? 'border' : 'p-8',
@@ -85,7 +79,7 @@ const MultiSelectComponent: React.FC<{
 								{selected && <div className="flex flex-wrap pt-4">
 									<div className='flex flex-wrap gap-2 relative'>
 										{topic?.categories.map(category => {
-											const categorySelected = selectedCategories.includes(category.id)
+											const categorySelected = option.selectedCategories.includes(category.id)
 											return <div style={{
 												backgroundColor: !categorySelected ? '' : color,
 												color: !categorySelected ? color : '#fff',
@@ -113,4 +107,4 @@ const MultiSelectComponent: React.FC<{
 	)
 }
 
-export default MultiSelectComponent
+export default PractiseSelector

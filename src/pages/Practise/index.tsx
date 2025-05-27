@@ -5,7 +5,7 @@ import { LeftOutlined } from "@ant-design/icons"
 import Button from "../../components/Button"
 import Switch from "../../components/Switch"
 import { useScrollToTop } from '../../utils/hook';
-import CodeRender from "../CodeRender"
+import CodeRender from "../../components/CodeRender"
 
 interface PractiseProps {
 	mode: PractiseMode

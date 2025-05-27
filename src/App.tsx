@@ -1,4 +1,4 @@
-import InterviewQuestionBank from './pages'
+import InterviewQuestionBank from './pages/Home'
 
 function App() {
 
