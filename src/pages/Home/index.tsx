@@ -96,14 +96,13 @@ const InterviewQuestionBank = () => {
         return (
             <div className="flex flex-col h-full overflow-hidden bg-gray-100 dark:bg-black">
                 <PractiseSelector
-                    style={{ flex: 1, overflow: 'auto' }}
+                    style={{ flex: 1, minHeight: 0, overflow: 'auto' }}
                     topics={data.sort((a, b) => a.priority - b.priority)}
                     value={options || { selectedCategories: [], selectedTopics: [] }}
                     onValueChange={value => setOptions(pre => ({ ...pre, ...value }))}
                 />
-                <div className='p-2 shadow-md bg-white dark:bg-zinc-800
-				 dark:text-white flex items-center gap-4 flex-wrap justify-center'
-                    style={{ flex: '0 0 auto' }}>
+                <div className='relative p-2 shadow-md bg-white dark:bg-zinc-800
+				 dark:text-white flex items-center gap-4 flex-wrap justify-center'>
                     {/* <InputNumber
                         showMax={true}
                         _size='small'
@@ -155,8 +154,8 @@ const InterviewQuestionBank = () => {
                     </Button>
                     <Button color={options.prac ? 'danger' : 'primary'} disabled={disabled}
                         onClick={() => startPractice(maxLength)}>{label}全部</Button>
-                    <a onClick={(e) => { e.stopPropagation() }} target='_blank' href={`http://github.com/shuangbofu/practice-mate`}>
-                        <GithubFilled className=' cursor-pointer absolute right-2 bottom-2.5 text-4xl !text-neutral-600' />
+                    <a className=' absolute right-2 bottom-2.5 ' onClick={(e) => { e.stopPropagation() }} target='_blank' href={`http://github.com/shuangbofu/practice-mate`}>
+                        <GithubFilled className=' cursor-pointer text-4xl !text-neutral-600' />
                     </a>
                 </div>
             </div >

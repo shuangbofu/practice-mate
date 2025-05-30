@@ -77,7 +77,7 @@ const PracticePage = (props: PractiseProps) => {
         <div className="dark:bg-neutral-800 h-full w-full relative">
             {renderContent()}
         </div>
-        <FloatingBubble
+        {refresh && <FloatingBubble
             axis='xy'
             magnetic='x'
             style={{
@@ -87,12 +87,12 @@ const PracticePage = (props: PractiseProps) => {
                 '--background': 'rgba(0,0,0,.5)',
                 '--size': '50px',
             }}
-            onClick={() => refresh && refresh()}
+            onClick={refresh}
         >
             <div className=" flex flex-col justify-center gap-0.5">
                 <RedoOutline className=" font-bold text-3xl text-gray-400" />
             </div>
-        </FloatingBubble>
+        </FloatingBubble>}
     </BackLayout>}
     </>
 }
