@@ -2,21 +2,32 @@ import { useEffect, useState } from 'react';
 
 export const useDarkMode = () => {
   const [isDark, setIsDark] = useState(false);
-
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDark(mediaQuery.matches);
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
-    // 监听主题变化
-    const handleChange = (e: any) => setIsDark(e.matches);
-    mediaQuery.addEventListener('change', handleChange);
+    const applyAttribute = (isDark: boolean) => {
+      document.documentElement.setAttribute(
+        'data-prefers-color-scheme',
+        isDark ? 'dark' : 'light'
+      )
+    }
 
-    // 清理监听器
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
+    // 初始设置
+    applyAttribute(mediaQuery.matches)
+    setIsDark(mediaQuery.matches)
 
-  return isDark;
-};
+    // 监听变化
+    const handler = (e: MediaQueryListEvent) => {
+      applyAttribute(e.matches)
+      setIsDark(e.matches)
+    }
+
+    mediaQuery.addEventListener('change', handler)
+
+    return () => mediaQuery.removeEventListener('change', handler)
+  }, [])
+  return isDark
+}
 
 import { useRef } from "react";
 

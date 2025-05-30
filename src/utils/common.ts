@@ -32,9 +32,9 @@ function interpolateColor(from: string, to: string, ratio: number): string {
         const hue2rgb = (p: number, q: number, t: number) => {
             if (t < 0) t += 1
             if (t > 1) t -= 1
-            if (t < 1/6) return p + (q - p) * 6 * t
-            if (t < 1/2) return q
-            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6
+            if (t < 1 / 6) return p + (q - p) * 6 * t
+            if (t < 1 / 2) return q
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
             return p
         }
 
@@ -45,9 +45,9 @@ function interpolateColor(from: string, to: string, ratio: number): string {
         } else {
             const q = l < 0.5 ? l * (1 + s) : l + s - l * s
             const p = 2 * l - q
-            r = hue2rgb(p, q, h + 1/3)
+            r = hue2rgb(p, q, h + 1 / 3)
             g = hue2rgb(p, q, h)
-            b = hue2rgb(p, q, h - 1/3)
+            b = hue2rgb(p, q, h - 1 / 3)
         }
 
         return `rgb(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)})`
@@ -66,3 +66,27 @@ function interpolateColor(from: string, to: string, ratio: number): string {
 
     return hslToRgb(h, s, l)
 }
+
+export const doubleClick = (onClick: (e: any, double: boolean) => void, delay = 250) => {
+    let timer: number | null = null
+
+    return (e: any) => {
+        if (timer !== null) {
+            // 双击
+            clearTimeout(timer)
+            timer = null
+            onClick(e, true)
+        } else {
+            // 第一次点击
+            timer = window.setTimeout(() => {
+                onClick(e, false)
+                timer = null
+            }, delay)
+        }
+    }
+}
+
+export const range = (n: number, m: number) => {
+    if (n > m) return []; // 如果起始值大于结束值，返回空数组
+    return Array.from({ length: m - n + 1 }, (_, i) => i + n);
+};
