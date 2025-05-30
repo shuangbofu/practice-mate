@@ -1,8 +1,7 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
 import classNames from 'classnames'
-import { COLORS, DARK_COLORS } from '../../constants'
 import { Topic, SelectOption } from '../../types'
-import { useDarkMode } from '../../utils/hook'
+import { getProgressColor } from '../../utils/common'
 
 const PractiseSelector: React.FC<{
 	style?: CSSProperties
@@ -11,7 +10,6 @@ const PractiseSelector: React.FC<{
 	onValueChange: (options: SelectOption) => void
 }> = ({ topics, onValueChange, value, style }) => {
 	const [option, setOption] = useState<SelectOption>(value)
-	const dark = useDarkMode()
 
 	const handleTopicSelect = (topicId: number) => {
 		const selectedTopicIndex = option.selectedTopics.indexOf(topicId)
@@ -59,7 +57,7 @@ const PractiseSelector: React.FC<{
 						{topics.map((topic, index) => {
 							const topicId = topic.id
 							const selected = option.selectedTopics.includes(topic.id)
-							const color = (dark ? DARK_COLORS : COLORS)[index]
+							const color = getProgressColor(index, topics.length)
 							return <div className={classNames(' rounded-md cursor-pointer p-4 bg-white  relative dark:brightness-50',
 								selected ? 'border' : 'p-8',
 							)}

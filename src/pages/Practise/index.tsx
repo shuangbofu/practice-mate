@@ -5,7 +5,10 @@ import { LeftOutlined } from "@ant-design/icons"
 import Button from "../../components/Button"
 import Switch from "../../components/Switch"
 import { useScrollToTop } from '../../utils/hook';
-import CodeRender from "../../components/CodeRender"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeHighlight from 'rehype-highlight'
+import 'highlight.js/styles/github.css'
 
 interface PractiseProps {
 	mode: PractiseMode
@@ -63,7 +66,11 @@ const PractisePage = (props: PractiseProps) => {
 						</div>
 					)}
 					{!hiddenAnswer && <div className="px-4 w-full h-full">
-						<CodeRender code={questionPool[practiceIndex].answer} />
+						<ReactMarkdown
+							children={questionPool[practiceIndex].answer}
+							remarkPlugins={[remarkGfm]}
+							rehypePlugins={[rehypeHighlight]}
+						/>
 					</div>}
 				</div>
 				<div

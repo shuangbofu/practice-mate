@@ -66,8 +66,10 @@ yarn build
 ```bash
 # .env.development/.env.production配置默认数据
 # 默认java八股文数据
-VITE_DATA_URL = http://fusb.top/data/java/data.json
+VITE_DATA_URL = http://fusb.top/data/java/result.json
 ```
+> 数据来源：[二哥的进阶之路](https://javabetter.cn/sidebar/sanfene/nixi.html)
+> python爬取处理掉广告等收集制作
 ### 📄 数据结构
 ```json
 [
