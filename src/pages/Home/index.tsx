@@ -83,8 +83,8 @@ const InterviewQuestionBank = () => {
             <div className='flex-1 min-h-0 h-full'>
                 {loading ? <div className='flex justify-center items-center'>
                     <div className={`absolute inset-0 z-10 flex justify-center items-center text-sm lg:text-3xl`}>
-                    数据加载中<DotLoading />
-                </div>
+                        数据加载中<DotLoading />
+                    </div>
                 </div> : <PractiseSelector
                     topics={data.sort((a, b) => a.priority - b.priority)}
                     value={options || { selectedCategories: [], selectedTopics: [] }}

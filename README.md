@@ -1,4 +1,4 @@
-# Practice Mate 练习伴侣（八股文宝典）🧠📚
+# Practice Mate 练习伴侣 [Java记忆宝典]🧠📚
 ![favicon](src/favicon.svg)
 
 [![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -6,7 +6,8 @@
 [![GitHub Issues](https://img.shields.io/github/issues/shuangbofu/practice-mate)](https://github.com/shuangbofu/practice-mate/issues)
 [![Live Demo](https://img.shields.io/badge/Demo-在线使用-green)](http://fusb.top/practice-mate/)
 
-**练习伴侣** 是一个轻量级学习记忆工具，通过自定义题目数据，帮助你高效练习和巩固知识。支持随机出题、答案隐藏、题目导航等功能。
+
+**练习伴侣** 是一个轻量级学习记忆工具，通过自定义题目数据，帮助你高效练习和巩固知识。支持随机出题、答案隐藏、题目导航等功能。你可以通过导入 **[Java面试数据](http://fusb.top/data/java/result.json)**，快速生成专属的 **[Java宝典](http://fusb.top/practice-mate/)** 页面。项目编译后生成静态站点页面，无需部署服务即可直接使用。
 
 ---
 
@@ -57,7 +58,7 @@ yarn build
 ## 📚 数据配置
 ```bash
 # .env.development/.env.production配置默认数据
-# 默认java八股文数据
+# 默认java面试数据源
 VITE_DATA_URL = http://fusb.top/data/java/result.json
 ```
 > 数据来源：
