@@ -68,8 +68,11 @@ const PractiseSelector: React.FC<{
 						key={topicId}
 						style={{ backgroundColor: selected ? color : '' }}
 						onClick={() => {
-							handleTopicSelect(topicId)
-							!selected && setOpenIndex(index)
+							if (selected) {
+								setOpenIndex(index)
+							} else {
+								handleTopicSelect(topicId)
+							}
 						}}
 					>
 						{topic.topicName}
@@ -80,6 +83,12 @@ const PractiseSelector: React.FC<{
 				title={topics[openIndex]?.topicName}
 				onClose={() => setOpenIndex(-1)}
 				closeOnMaskClick={true}
+				actions={[[{
+					key: 'cancel', text: '取消全部', onClick: () => {
+						setOpenIndex(-1)
+						handleTopicSelect(topics[openIndex]?.id)
+					}
+				}]]}
 				visible={openIndex > -1}
 				content={<div className="flex flex-wrap pt-2 gap-2">
 					{openIndex > -1 && topics[openIndex]?.categories.map(category => {
