@@ -42,3 +42,45 @@ export const useScrollToTop = () => {
 
   return { ref, scrollToTop };
 };
+
+
+export const useContainerWidth = (initialWidth?: number, initialHeight?: number) => {
+  const ref = useRef<HTMLDivElement | null>(null); // 容器的 ref
+  const [width, setWidth] = useState(initialWidth);
+  const [height, setHeight] = useState(initialHeight);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // 创建 ResizeObserver 实例
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { contentRect } = entry;
+        setWidth(contentRect.width); // 设置宽度
+        setHeight(contentRect.height); // 设置高度
+      }
+    });
+
+    // 监听 ref 容器
+    resizeObserver.observe(element);
+
+    return () => {
+      // 卸载时移除监听
+      resizeObserver.unobserve(element);
+    };
+  }, []);
+
+  return { ref, width, height };
+};
+
+export const useMode = () => {
+  const [mode, setMode] = useState<'pc' | 'mobile'>('pc')
+  const { ref, width } = useContainerWidth()
+
+  useEffect(() => {
+    setMode(width && width <= 500 ? 'mobile' : 'pc')
+  }, [width])
+
+  return { mode, ref }
+}

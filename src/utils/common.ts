@@ -90,3 +90,19 @@ export const range = (n: number, m: number) => {
     if (n > m) return []; // 如果起始值大于结束值，返回空数组
     return Array.from({ length: m - n + 1 }, (_, i) => i + n);
 };
+
+
+// 随机选择数组中的 n 个元素
+export function selectRandomNElementsFromArray(array: any[], n: number) {
+    // 打乱数组的函数（Fisher-Yates Shuffle 算法）
+    function shuffleArray(arr: any[]) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1))
+                ;[arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+        return arr
+    }
+
+    const shuffledArray = shuffleArray([...array]) // 克隆并打乱数组
+    return shuffledArray.slice(0, n) // 选择前 n 个元素
+}
