@@ -18,10 +18,14 @@ export interface QuestionItem {
 	answer: string // 假设答案是HTML字符串
 }
 
-
 export interface SelectOption {
 	selectedTopics: number[]
-	selectedCategories: number[]
+	selectedCategories: number[],
+}
+
+export interface Options extends SelectOption {
+	prac?: boolean
+	random?: boolean
 }
 
 export interface PracticeItem extends QuestionItem {
@@ -30,5 +34,3 @@ export interface PracticeItem extends QuestionItem {
 	categoryName: string
 	topicName: string
 }
-
-export type PractiseMode = 'learn' | 'practise'
