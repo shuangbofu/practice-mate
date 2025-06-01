@@ -67,7 +67,6 @@ const PracticePage = (props: PractiseProps) => {
                         className={`flex-1 min-h-0 h-full w-full overflow-auto flex flex-col items-center
 					${hiddenAnswer ? ' justify-center pb-20' : 'justify-start'}`}>
                         {hiddenAnswer && <div className="p-4 text-5xl text-center break-all text-neutral-700 dark:text-neutral-400">
-                            {item.id}{idx}
                             {item.question}
                             {renderTip('mt-10')}
                         </div>}

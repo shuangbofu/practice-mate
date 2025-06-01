@@ -87,8 +87,7 @@ export const useMode = () => {
 }
 
 export const useKeyEnter = (events: Record<string, () => void>) => {
-  useKeyPress([], (e, type) => {
-    console.log(e,)
+  useKeyPress(() => true, (_, type) => {
     events[type]?.()
   })
 }
