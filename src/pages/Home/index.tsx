@@ -148,6 +148,7 @@ const InterviewQuestionBank = () => {
     return (
         <div ref={ref} className="overflow-hidden h-screen">
             {options && (questionPool.length > 0 ? <PracticePage
+                mobile={mode === 'mobile'}
                 back={() => {
                     setQuestionPool([])
                     setCount(30)

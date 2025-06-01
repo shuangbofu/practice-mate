@@ -1,3 +1,4 @@
+import { useKeyPress } from 'ahooks';
 import { useEffect, useState } from 'react';
 
 export const useDarkMode = () => {
@@ -83,4 +84,11 @@ export const useMode = () => {
   }, [width])
 
   return { mode, ref }
+}
+
+export const useKeyEnter = (events: Record<string, () => void>) => {
+  useKeyPress([], (e, type) => {
+    console.log(e,)
+    events[type]?.()
+  })
 }
