@@ -7,7 +7,7 @@
 [![Live Demo](https://img.shields.io/badge/Demo-在线使用-green)](http://fusb.top/practice-mate/)
 
 
-**练习伴侣** 是一个轻量级学习记忆工具，通过自定义题目数据，帮助你高效练习和巩固知识。支持随机出题、答案隐藏、题目导航等功能。你可以通过导入 **[Java面试数据](http://fusb.top/data/java/result.json)**，快速生成专属的 **[Java宝典](http://fusb.top/practice-mate/)** 页面。项目编译后生成静态站点页面，无需部署服务即可直接使用。
+**练习伴侣** 是一个轻量级学习记忆工具，通过自定义题目数据，帮助你高效练习和巩固知识。支持随机出题、答案隐藏、题目导航等功能。你可以通过导入 **[Java面试数据](https://fusb.top/data/java/result.json)**，快速生成专属的 **[Java宝典](https://fusb.top/practice-mate/)** 页面。项目编译后生成静态站点页面，无需部署服务即可直接使用。
 
 ---
 
@@ -59,7 +59,7 @@ yarn build
 ```bash
 # .env.development/.env.production配置默认数据
 # 默认java面试数据源
-VITE_DATA_URL = http://fusb.top/data/java/result.json
+VITE_DATA_URL = https://fusb.top/data/java/result.json
 ```
 > 数据来源：
 > [二哥的进阶之路](https://javabetter.cn/sidebar/sanfene/nixi.html)   [toBeBetterJavaer](https://github.com/itwanger/toBeBetterJavaer)
