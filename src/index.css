@@ -53,3 +53,43 @@ figure img {
 figure figcaption {
 	@apply mt-2 text-center text-sm font-semibold text-gray-600 dark:text-gray-600;
 }
+
+/* Markdown 图片样式 */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0.5rem 0;
+}
+
+/* 代码块容器样式 - 支持横向滚动并阻止事件冒泡 */
+pre {
+	@apply overflow-x-auto;
+	max-width: 100%;
+	touch-action: pan-x pinch-zoom; /* 允许横向滚动和缩放 */
+	overflow-y: hidden; /* 阻止垂直滚动 */
+	
+	/* 防止滚动传播到父元素 */
+	&:has(> code) {
+		scrollbar-width: thin; /* Firefox */
+		-webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
+	}
+}
+
+/* 确保代码块可以独立横向滚动 */
+pre > code {
+	display: inline-block;
+	min-width: 100%;
+	white-space: pre;
+}
+
+/* 修复 react-zoom-pan-pinch 的 overflow 问题 */
+.react-transform-wrapper,
+.transform-component-module_wrapper__SPB86 {
+	overflow: visible !important;
+}
+
+.react-transform-content,
+.transform-component-module_content__FBWxo {
+	overflow: visible !important;
+}
